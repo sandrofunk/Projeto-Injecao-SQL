@@ -1,0 +1,13 @@
+Você pode detectar a injeção de SQL manualmente aplicando um conjunto sistemático de testes em cada ponto de entrada do aplicativo. Para isso, é comum realizar as seguintes ações:
+
+1. Utilização do caractere de aspas simples ('), procurando por erros ou outras anomalias que possam indicar uma possível injeção de SQL.
+
+2. Implementação de sintaxe específica de SQL que avalie o valor base (original) do ponto de entrada e um valor diferente, observando diferenças sistemáticas nas respostas do aplicativo.
+
+3. Testes com condições booleanas, como OR 1=1 e OR 1=2, com o intuito de identificar discrepâncias nas respostas do aplicativo.
+
+4. Utilização de cargas projetadas para causar atrasos durante a execução de consultas SQL, analisando variações no tempo necessário para obter uma resposta.
+
+5. Implementação de cargas OAST (Out-of-Band SQL Injection Testing) projetadas para provocar interações de rede fora de banda durante a execução de consultas SQL, permitindo monitorar quaisquer interações resultantes.
+
+Essas abordagens permitem identificar possíveis vulnerabilidades de injeção de SQL e tomar medidas para corrigi-las antes que sejam exploradas por invasores. No entanto, é importante ressaltar que a automação desses testes por meio de ferramentas especializadas também pode ser uma estratégia eficaz para detectar e mitigar esse tipo de ameaça de forma mais abrangente e eficiente.
