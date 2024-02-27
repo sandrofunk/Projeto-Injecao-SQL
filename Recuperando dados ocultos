@@ -1,0 +1,20 @@
+O aplicativo não implementa nenhuma defesa contra ataques de injeção de SQL. Isso significa que um invasor pode construir o seguinte ataque, por exemplo:
+
+https://insecure-website.com/products?category=Gifts'--
+Isso resulta na consulta SQL:
+
+SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1
+
+Fundamentalmente, observe que --é um indicador de comentário em SQL. Isso significa que o restante da consulta é interpretado como um comentário, removendo-o efetivamente. Neste exemplo, isso significa que a consulta não inclui mais AND released = 1. Com isso, todos os produtos são exibidos, inclusive aqueles que ainda não foram lançados.
+
+Você pode usar um ataque semelhante para fazer com que o aplicativo exiba todos os produtos em qualquer categoria, incluindo categorias que eles não conhecem:
+
+https://insecure-website.com/products?category=Gifts'+OR+1=1--
+Isso resulta na consulta SQL:
+
+SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
+
+A consulta modificada retorna todos os itens onde é categoryou Giftsé 1igual a 1. Como 1=1sempre é verdade, a consulta retorna todos os itens.
+
+Aviso
+Tome cuidado ao injetar a condição OR 1=1em uma consulta SQL. Mesmo que pareça inofensivo no contexto em que você está injetando, é comum que os aplicativos usem dados de uma única solicitação em diversas consultas diferentes. Se sua condição atingir uma instrução UPDATEou DELETE, por exemplo, isso poderá resultar em perda acidental de dados.

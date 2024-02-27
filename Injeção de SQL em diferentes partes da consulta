@@ -1,0 +1,9 @@
+A maioria das vulnerabilidades de injeção SQL é encontrada tipicamente na cláusula WHERE de uma consulta SELECT, sendo este um conhecimento comum entre testadores experientes nesta área.
+
+No entanto, é importante ressaltar que as vulnerabilidades de injeção de SQL podem ocorrer em qualquer parte da consulta e em diversos tipos de instruções. Outros pontos críticos onde a injeção de SQL pode ser explorada incluem:
+
+Nas declarações UPDATE, tanto nos valores a serem atualizados quanto na cláusula WHERE.
+Nas declarações INSERT, especificamente nos valores a serem inseridos.
+Nas instruções SELECT, tanto no nome das tabelas quanto das colunas.
+Nas instruções SELECT, dentro da cláusula ORDER BY.
+A compreensão desses pontos é essencial para uma análise abrangente e eficaz de segurança em sistemas que lidam com bancos de dados.
